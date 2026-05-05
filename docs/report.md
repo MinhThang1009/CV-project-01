@@ -220,14 +220,14 @@ Dự án đã xây dựng thành công một quy trình theo dõi đối tượn
 
 | Sản phẩm | File/Thư mục |
 |----------|-------------|
-| Mã nguồn chương trình | `data_survey.py`, `tracker.py`, `experiment.py` |
-| Báo cáo dự án | `docs/report.md` (file này) |
+| Mã nguồn chương trình | [`data_survey.py`](../data_survey.py), [`tracker.py`](../tracker.py), [`experiment.py`](../experiment.py) |
+| Báo cáo dự án | [`docs/report.md`](./report.md) (file này) |
 | Video đầu ra | [`output/*/tracking_*.mp4`](../output/) |
 | Chuỗi ảnh kết quả | [`output/*/frame_*.jpg`](../output/) |
 | Quỹ đạo đối tượng | [`output/*/trajectory_*.csv`](../output/) |
-| Kết quả phân tích dữ liệu | `reports/data_survey_results.csv` |
-| Ảnh so sánh + biểu đồ | `reports/*.jpg` |
-| Báo cáo đánh giá | `reports/eval_*.txt` |
+| Kết quả phân tích dữ liệu | [`reports/data_survey_results.csv`](../reports/data_survey_results.csv) |
+| Ảnh so sánh + biểu đồ | [`reports/*.jpg`](../reports/) |
+| Báo cáo đánh giá | [`reports/eval_*.txt`](../reports/) |
 
 ### Cấu trúc thư mục dự án
 
