@@ -86,26 +86,21 @@ graph TD
     classDef update fill:#e2e3e5,stroke:#6c757d,stroke-width:2px,color:#000;
 
     %% Nodes
-    A[Khung hình I_0]:::init --> B[Gaussian Blur 5x5]:::process
-    B --> C[Phát hiện Shi-Tomasi Corners]:::process
-    C --> D[Khởi tạo Bounding Box & Tập điểm P_0]:::init
+    A[Frame I_0: Khởi tạo Bbox & Tiền xử lý]:::init --> B[Phát hiện đặc trưng Shi-Tomasi P_0]:::process
+    B --> C{Đọc Khung hình I_i}:::check
     
-    D --> E{Khung hình I_i kế tiếp}:::check
-    E --> F[Gaussian Blur 5x5]:::process
-    F --> G[Pyramid Lucas-Kanade Optical Flow]:::process
-    G --> H[Forward-Backward Consistency Check]:::check
-    H --> I[Lọc bỏ điểm ngoại lai - Outliers]:::update
-    I --> J[Tính Dịch chuyển Trung vị - Median Displacement]:::process
-    J --> K[Cập nhật Bounding Box & Vẽ Quỹ đạo]:::update
+    C --> D[Ước lượng chuyển động PyrLK]:::process
+    D --> E[Lọc điểm ngoại lai FB-Check]:::update
+    E --> F[Dịch chuyển Bbox theo Trung vị]:::update
     
-    K --> L{Số điểm P_i < 10?}:::check
-    L -- Có --> M[Phát hiện lại Shi-Tomasi]:::process
-    M --> N
-    L -- Không --> N[Lưu Video & Ảnh kết quả]:::update
+    F --> G{Số điểm P_i < 10?}:::check
+    G -- Có --> H[Phát hiện lại Shi-Tomasi]:::process
+    H --> I
+    G -- Không --> I[Lưu Kết Quả Frame]:::update
     
-    N --> O{Còn Khung hình?}:::check
-    O -- Có --> E
-    O -- Không --> P((Kết thúc)):::init
+    I --> J{Còn Frame?}:::check
+    J -- Có --> C
+    J -- Không --> K((Kết thúc)):::init
 ```
 <div align="center">
   <em>Hình 2: Sơ đồ khối tổng quan của quy trình theo dõi đối tượng</em>
