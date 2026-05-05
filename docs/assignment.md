@@ -1,5 +1,7 @@
 # DỰ ÁN THỰC HÀNH
 
+<div align="justify">
+
 ## P3. Theo dõi đối tượng trong video
 
 ### P3.1. Mục tiêu của dự án
@@ -93,3 +95,5 @@ Sản phẩm của dự án bao gồm:
 ### P3.7. Kết quả cần đạt
 
 Sau khi hoàn thành dự án, kết quả đạt được cần thể hiện một quy trình theo dõi đối tượng cơ bản có khả năng đi từ dữ liệu video đến kết quả bám bắt đối tượng theo thời gian. Quan trọng hơn, dự án cần cho thấy được mối liên hệ giữa **chuyển động ảnh**, **đặc trưng quan sát được** và **khả năng duy trì sự liên tục** của đối tượng trong chuỗi khung hình.
+
+</div>
