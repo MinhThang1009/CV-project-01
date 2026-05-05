@@ -1,13 +1,17 @@
-# BÁO CÁO DỰ ÁN P3: THEO DÕI ĐỐI TƯỢNG TRONG VIDEO
+<div align="center">
+  <h1 align="center">📄 BÁO CÁO DỰ ÁN P3: THEO DÕI ĐỐI TƯỢNG TRONG VIDEO</h1>
+</div>
 
-## 1. Phát biểu bài toán và mục tiêu
+---
+
+## 1. 🎯 Phát biểu bài toán và mục tiêu
 
 Bài toán theo dõi đối tượng (object tracking) nhằm xác định vị trí của đối tượng theo thời gian, duy trì sự liên tục giữa các khung hình và mô tả quỹ đạo chuyển động trong chuỗi video. Khác với xử lý ảnh tĩnh (chỉ xác định đối tượng trong từng ảnh riêng lẻ), bài toán theo dõi khai thác **thông tin chuyển động** giữa các khung hình liên tiếp.
 
 **Mục tiêu dự án**: Xây dựng quy trình theo dõi đối tượng từ dữ liệu chuỗi ảnh, sử dụng phương pháp Feature-based Tracking dựa trên thuật toán Pyramid Lucas-Kanade (Optical Flow).
 
 
-## 2. Mô tả dữ liệu
+## 2. 📊 Mô tả dữ liệu
 
 Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục `data/`:
 
@@ -30,7 +34,7 @@ Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục `data/`:
 *(Biểu đồ biến thiên chiếu sáng: `reports/survey_brightness.jpg`)*
 
 
-## 3. Mô tả quy trình theo dõi
+## 3. ⚙️ Mô tả quy trình theo dõi
 
 ### 3.1. Lựa chọn phương pháp
 
@@ -66,7 +70,7 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 - Lưu chuỗi ảnh kết quả vào `output/`.
 
 
-## 4. Các phương án thực nghiệm
+## 4. 🧪 Các phương án thực nghiệm
 
 ### Kịch bản 1: So sánh kích thước cửa sổ (winSize)
 
@@ -89,7 +93,7 @@ So sánh kết quả trên 2 dataset có điều kiện chuyển động khác n
 *(Biểu đồ số điểm đặc trưng: `reports/points_*.jpg`)*
 
 
-## 5. Kết quả theo dõi và so sánh
+## 5. 📈 Kết quả theo dõi và so sánh
 
 ### 5.1. Chỉ số đánh giá (P3.4.4)
 
@@ -129,7 +133,7 @@ Các chỉ số định lượng được sử dụng:
 *(Báo cáo chi tiết: `reports/eval_winsize_kite-surf.txt`, `reports/eval_datasets_win21.txt`)*
 
 
-## 6. Nhận xét và kết luận
+## 6. 💡 Nhận xét và kết luận
 
 ### 6.1. Nhận xét
 
@@ -163,7 +167,7 @@ Dự án đã xây dựng thành công một quy trình theo dõi đối tượn
 **Hạn chế**: Phương pháp hiện tại chỉ dịch chuyển bbox (translation) mà không thay đổi kích thước (scale), nên không thích ứng tốt khi đối tượng tiến lại gần hoặc ra xa camera. Có thể cải thiện bằng cách ước lượng scale change từ khoảng cách giữa các điểm đặc trưng.
 
 
-## 7. Sản phẩm nộp (P3.6)
+## 7. 📦 Sản phẩm nộp (P3.6)
 
 | Sản phẩm | File/Thư mục |
 |----------|-------------|
@@ -209,7 +213,7 @@ Dự án đã xây dựng thành công một quy trình theo dõi đối tượn
 ```
 
 
-## Phụ lục: Cách chạy chương trình
+## 📌 Phụ lục: Cách chạy chương trình
 
 ```bash
 # Cài đặt
