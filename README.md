@@ -27,11 +27,11 @@
 
 <div align="justify">
 
-## 1. Giới thiệu chung
+## 1. 📖 Giới thiệu chung
 
 Dự án này triển khai một hệ thống theo dõi đối tượng (Object Tracking) dựa trên đặc trưng hình ảnh. Thuật toán cốt lõi sử dụng luồng quang học (Optical Flow) **Pyramid Lucas-Kanade** để ước lượng chuyển động, kết hợp với bộ dò góc **Shi-Tomasi** để trích xuất các điểm đặc trưng tốt nhất. Để tăng tính bền vững (robustness), hệ thống tích hợp bộ lọc **Forward-Backward consistency** để loại bỏ các điểm bị trôi (drift) hoặc che khuất (occlusion).
 
-## 2. Tính năng nổi bật
+## 2. ✨ Tính năng nổi bật
 
 - 🔭 **Pyramid Lucas-Kanade (3 mức):** Ước lượng chuyển động lớn thông qua xử lý kim tự tháp ảnh đa độ phân giải.
 - 🎯 **Shi-Tomasi Corner Detection:** Trích xuất các điểm góc ổn định, thỏa mãn các điều kiện bám bắt tốt nhất.
@@ -40,7 +40,7 @@ Dự án này triển khai một hệ thống theo dõi đối tượng (Object 
 - 🔄 **Auto Re-detection:** Tự động phát hiện và bổ sung điểm đặc trưng mới khi số lượng điểm hiện tại giảm dưới ngưỡng (ngăn chặn mất dấu).
 - 📊 **Phân tích Tự động & Xuất báo cáo:** Đánh giá độ ổn định, tỷ lệ sống sót của điểm (survival rate) và tự động xuất biểu đồ, quỹ đạo.
 
-## 3. Demo Trực quan
+## 3. 🎞️ Demo Trực quan
 
 Dưới đây là kết quả theo dõi trên tập dữ liệu `kite-surf` (chuyển động nhanh) sử dụng `winSize=21`.
 
@@ -50,7 +50,7 @@ Dưới đây là kết quả theo dõi trên tập dữ liệu `kite-surf` (chu
 
 > 🟢 **Hộp xanh (Bounding Box)** &nbsp;\|&nbsp; 🔴 **Chấm đỏ (Đặc trưng được theo dõi)** &nbsp;\|&nbsp; 🔵 **Đường màu Cyan (Quỹ đạo chuyển động)**
 
-## 4. Kiến trúc & Tổng quan phương pháp
+## 4. 🧠 Kiến trúc & Tổng quan phương pháp
 
 Sơ đồ quy trình thực thi (Pipeline) theo dõi qua từng khung hình:
 
@@ -80,7 +80,7 @@ graph TD
     J -- Không --> K((Kết thúc)):::init
 ```
 
-## 5. Cấu trúc thư mục
+## 5. 📂 Cấu trúc thư mục
 
 Dự án tuân thủ chuẩn tổ chức thư mục cho Machine Learning / Computer Vision:
 
@@ -103,7 +103,7 @@ Dự án tuân thủ chuẩn tổ chức thư mục cho Machine Learning / Compu
     └── 📄 assignment.md          # Yêu cầu đề bài gốc
 ```
 
-## 6. Hướng dẫn Cài đặt
+## 6. 💻 Hướng dẫn Cài đặt
 
 Yêu cầu hệ thống: **Python 3.8+**
 
@@ -129,7 +129,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## 7. Cách Sử dụng
+## 7. 🚀 Cách Sử dụng
 
 Dự án cung cấp 3 module chính với các chức năng độc lập:
 
@@ -154,7 +154,7 @@ python tracker.py --dataset kite-surf --bbox 210 140 260 270 --no_display
 python experiment.py --no_display
 ```
 
-## 8. Đánh giá & Kết quả
+## 8. 📈 Đánh giá & Kết quả
 
 Đánh giá định lượng được thực hiện trên các chỉ số: **Stability** (Độ ổn định của Bbox), **Survival Rate** (Tỷ lệ điểm giữ được), và **Jitter** (Độ giật lag).
 
@@ -175,7 +175,7 @@ python experiment.py --no_display
 
 > 📌 **Kết luận chính:** Cửa sổ `winSize=21` cung cấp sự cân bằng tốt nhất giữa độ ổn định và chi phí tính toán. Hệ thống hoạt động xuất sắc (jitter=0%) trên mọi cấu hình nhờ cơ chế lọc Median và Forward-Backward.
 
-## 9. Tài liệu tham khảo
+## 9. 📚 Tài liệu tham khảo
 
 1. **Lucas, B. D., & Kanade, T. (1981).** *An iterative image registration technique with an application to stereo vision.*
 2. **Shi, J., & Tomasi, C. (1994).** *Good features to track.* IEEE Conference on Computer Vision and Pattern Recognition.

@@ -58,7 +58,7 @@ Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục [`data/`](
 <div align="center">
   <img src="../reports/survey_brightness.jpg" alt="Biểu đồ chiếu sáng" width="80%">
   <br><br>
-  <em>Hình 1: Biểu đồ đánh giá biến thiên chiếu sáng giữa các tập dữ liệu</em>
+  <em>Hình 1: Biểu đồ đánh giá biến thiên chiếu sáng giữa các tập dữ liệu.</em>
 </div>
 
 
@@ -103,7 +103,7 @@ graph TD
     J -- Không --> K((Kết thúc)):::init
 ```
 <div align="center">
-  <em>Hình 2: Sơ đồ khối tổng quan của quy trình theo dõi đối tượng</em>
+  <em>Hình 2: Sơ đồ khối tổng quan của quy trình theo dõi đối tượng.</em>
 </div>
 <br>
 
@@ -197,13 +197,13 @@ Các chỉ số định lượng được sử dụng:
 <div align="center">
   <img src="../reports/compare_winsize_kite-surf.jpg" alt="So sánh winSize" width="80%">
   <br><br>
-  <em>Hình 6: So sánh trực quan bounding box giữa các cấu hình winSize</em>
+  <em>Hình 6: So sánh trực quan bounding box giữa các cấu hình winSize.</em>
 </div>
 <br>
 <div align="center">
   <img src="../reports/points_winsize_kite-surf.jpg" alt="Số lượng điểm winSize" width="80%">
   <br><br>
-  <em>Hình 7: Biểu đồ sự biến thiên số lượng điểm đặc trưng theo thời gian</em>
+  <em>Hình 7: Biểu đồ sự biến thiên số lượng điểm đặc trưng theo thời gian.</em>
 </div>
 
 **Kịch bản 2: So sánh dataset (winSize=21)**
@@ -218,13 +218,13 @@ Các chỉ số định lượng được sử dụng:
 <div align="center">
   <img src="../reports/compare_datasets_win21.jpg" alt="So sánh dataset" width="80%">
   <br><br>
-  <em>Hình 8: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
+  <em>Hình 8: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt.</em>
 </div>
 <br>
 <div align="center">
   <img src="../reports/points_datasets_win21.jpg" alt="Số lượng điểm dataset" width="80%">
   <br><br>
-  <em>Hình 9: Biểu đồ so sánh tỷ lệ tồn tại của các điểm đặc trưng giữa hai dataset</em>
+  <em>Hình 9: Biểu đồ so sánh tỷ lệ tồn tại của các điểm đặc trưng giữa hai dataset.</em>
 </div>
 
 > 📄 **Báo cáo log dạng text:** [`reports/eval_winsize_kite-surf.txt`](../reports/eval_winsize_kite-surf.txt), [`reports/eval_datasets_win21.txt`](../reports/eval_datasets_win21.txt)
