@@ -93,9 +93,9 @@ Dự án tuân thủ chuẩn tổ chức thư mục cho Machine Learning / Compu
 ├── 📜 requirements.txt           # Danh sách thư viện phụ thuộc
 ├── 📜 .gitignore                 # Cấu hình bỏ qua file cho Git
 │
-├── 🐍 data_survey.py             # Script khảo sát dữ liệu (ánh sáng, chuyển động)
-├── 🐍 tracker.py                 # Core Pipeline theo dõi đối tượng
-├── 🐍 experiment.py              # Kịch bản thử nghiệm & đánh giá
+├── 💻 data_survey.py             # Script khảo sát dữ liệu (ánh sáng, chuyển động)
+├── 💻 tracker.py                 # Core Pipeline theo dõi đối tượng
+├── 💻 experiment.py              # Kịch bản thử nghiệm & đánh giá
 │
 ├── 📂 data/                      # Chứa dữ liệu đầu vào (6 chuỗi ảnh)
 ├── 📂 output/                    # Kết quả xuất ra (Video .mp4, Ảnh, CSV)

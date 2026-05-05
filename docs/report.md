@@ -234,9 +234,9 @@ Dự án đã xây dựng thành công một quy trình theo dõi đối tượn
 ├── 📜 requirements.txt        # Dependencies
 ├── 📜 .gitignore
 │
-├── 🐍 data_survey.py          # P3.4.1 - Khảo sát dữ liệu
-├── 🐍 tracker.py              # P3.4.2 - Quy trình theo dõi (Pyramid LK + Shi-Tomasi)
-├── 🐍 experiment.py           # P3.4.3 & P3.4.4 - So sánh & đánh giá
+├── 💻 data_survey.py          # P3.4.1 - Khảo sát dữ liệu
+├── 💻 tracker.py              # P3.4.2 - Quy trình theo dõi (Pyramid LK + Shi-Tomasi)
+├── 💻 experiment.py           # P3.4.3 & P3.4.4 - So sánh & đánh giá
 │
 ├── 📂 data/                   # Dữ liệu đầu vào (6 chuỗi khung hình)
 │   ├── 📁 kite-surf/          #   50 frames
