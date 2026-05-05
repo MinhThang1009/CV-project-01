@@ -229,34 +229,35 @@ Dự án đã xây dựng thành công một quy trình theo dõi đối tượn
 
 ### Cấu trúc thư mục dự án
 
-```
-├── requirements.txt        # Dependencies
-├── .gitignore
+```text
+📦 CV-project-01
+├── 📜 requirements.txt        # Dependencies
+├── 📜 .gitignore
 │
-├── data_survey.py          # P3.4.1 - Khảo sát dữ liệu
-├── tracker.py              # P3.4.2 - Quy trình theo dõi (Pyramid LK + Shi-Tomasi)
-├── experiment.py           # P3.4.3 & P3.4.4 - So sánh & đánh giá
+├── 🐍 data_survey.py          # P3.4.1 - Khảo sát dữ liệu
+├── 🐍 tracker.py              # P3.4.2 - Quy trình theo dõi (Pyramid LK + Shi-Tomasi)
+├── 🐍 experiment.py           # P3.4.3 & P3.4.4 - So sánh & đánh giá
 │
-├── data/                   # Dữ liệu đầu vào (6 chuỗi khung hình)
-│   ├── kite-surf/          #   50 frames
-│   ├── lab-coat/           #   47 frames
-│   ├── libby/              #   49 frames
-│   ├── pigs/               #   79 frames
-│   ├── shooting/           #   40 frames
-│   └── soapbox/            #   99 frames
+├── 📂 data/                   # Dữ liệu đầu vào (6 chuỗi khung hình)
+│   ├── 📁 kite-surf/          #   50 frames
+│   ├── 📁 lab-coat/           #   47 frames
+│   ├── 📁 libby/              #   49 frames
+│   ├── 📁 pigs/               #   79 frames
+│   ├── 📁 shooting/           #   40 frames
+│   └── 📁 soapbox/            #   99 frames
 │
-├── output/                 # Kết quả theo dõi
-│   ├── kite-surf_win15/    #   tracking_*.mp4 + frame_*.jpg + trajectory_*.csv
-│   ├── kite-surf_win21/
-│   ├── kite-surf_win31/
-│   └── soapbox_win21/
+├── 📂 output/                 # Kết quả theo dõi
+│   ├── 📁 kite-surf_win15/    #   tracking_*.mp4 + frame_*.jpg + trajectory_*.csv
+│   ├── 📁 kite-surf_win21/
+│   ├── 📁 kite-surf_win31/
+│   └── 📁 soapbox_win21/
 │
-├── reports/                # Báo cáo phân tích & biểu đồ
+├── 📂 reports/                # Báo cáo phân tích & biểu đồ
 │   └── ...
 │
-└── docs/                   # Tài liệu
-    ├── report.md           #   Báo cáo dự án (file này)
-    └── assignment.md       #   Đề bài
+└── 📂 docs/                   # Tài liệu
+    ├── 📄 report.md           #   Báo cáo dự án (file này)
+    └── 📄 assignment.md       #   Đề bài
 ```
 
 
