@@ -57,7 +57,7 @@ Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục [`data/`](
 **Biểu đồ biến thiên chiếu sáng (xem Hình 1):**
 <div align="center">
   <img src="../reports/survey_brightness.jpg" alt="Biểu đồ chiếu sáng" width="80%">
-  <br>
+  <br><br>
   <em>Hình 1: Biểu đồ đánh giá biến thiên chiếu sáng giữa các tập dữ liệu</em>
 </div>
 
@@ -114,7 +114,7 @@ graph TD
 
 <div align="center">
   <img src="../output/kite-surf_win21/frame_0000.jpg" alt="Bước Khởi tạo" width="60%">
-  <br>
+  <br><br>
   <em>Hình 3: Giai đoạn Khởi tạo (Frame 0) - Xác định Bounding Box và trích xuất điểm đặc trưng ban đầu.</em>
 </div>
 
@@ -129,13 +129,13 @@ graph TD
 
 <div align="center">
   <img src="../output/kite-surf_win21/frame_0025.jpg" alt="Bước Theo dõi" width="60%">
-  <br>
+  <br><br>
   <em>Hình 4: Giai đoạn Theo dõi (Frame 25) - Bám bắt đối tượng và vẽ quỹ đạo chuyển động (chuyển động ảnh).</em>
 </div>
-
+<br>
 <div align="center">
   <img src="../output/kite-surf_win21/frame_0049.jpg" alt="Bước Kết thúc" width="60%">
-  <br>
+  <br><br>
   <em>Hình 5: Giai đoạn Kết thúc (Frame 49) - Hoàn thành chuỗi video, minh chứng cho khả năng duy trì sự liên tục.</em>
 </div>
 
@@ -196,13 +196,13 @@ Các chỉ số định lượng được sử dụng:
 
 <div align="center">
   <img src="../reports/compare_winsize_kite-surf.jpg" alt="So sánh winSize" width="80%">
-  <br>
+  <br><br>
   <em>Hình 6: So sánh trực quan bounding box giữa các cấu hình winSize</em>
 </div>
-
+<br>
 <div align="center">
   <img src="../reports/points_winsize_kite-surf.jpg" alt="Số lượng điểm winSize" width="80%">
-  <br>
+  <br><br>
   <em>Hình 7: Biểu đồ sự biến thiên số lượng điểm đặc trưng theo thời gian</em>
 </div>
 
@@ -217,13 +217,13 @@ Các chỉ số định lượng được sử dụng:
 
 <div align="center">
   <img src="../reports/compare_datasets_win21.jpg" alt="So sánh dataset" width="80%">
-  <br>
+  <br><br>
   <em>Hình 8: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
 </div>
-
+<br>
 <div align="center">
   <img src="../reports/points_datasets_win21.jpg" alt="Số lượng điểm dataset" width="80%">
-  <br>
+  <br><br>
   <em>Hình 9: Biểu đồ so sánh tỷ lệ tồn tại của các điểm đặc trưng giữa hai dataset</em>
 </div>
 
