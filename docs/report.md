@@ -112,7 +112,7 @@ graph TD
 </div>
 <br>
 
-**Bước 1 — Khởi tạo tại khung hình I₀:**
+**Bước 1 — Khởi tạo tại khung hình I₀ (xem Hình 3):**
 1. **Tiền xử lý**: Làm mượt ảnh bằng bộ lọc Gaussian (kernel 5×5, σ=1.0 — Mục 4.1.2) để giảm nhiễu cộng.
 2. **Chọn vùng quan tâm (ROI)**: Người dùng khoanh vùng đối tượng bằng chuột (`cv2.selectROI`).
 3. **Phát hiện điểm đặc trưng**: Dùng Shi-Tomasi (`cv2.goodFeaturesToTrack`) để tìm tập điểm P₀ chỉ nằm trong ROI. Các tham số: maxCorners=200, qualityLevel=0.01, minDistance=7, blockSize=7.
@@ -123,7 +123,7 @@ graph TD
   <em>Hình 3: Giai đoạn Khởi tạo (Frame 0) - Xác định Bounding Box và trích xuất điểm đặc trưng ban đầu.</em>
 </div>
 
-**Bước 2 — Theo dõi qua từng khung hình Iᵢ (i > 0):**
+**Bước 2 — Theo dõi qua từng khung hình Iᵢ (i > 0) (xem Hình 4):**
 1. **Ước lượng chuyển động**: Dùng `cv2.calcOpticalFlowPyrLK` (Pyramid Lucas-Kanade) để tính vector chuyển động cho mỗi điểm trong Pᵢ₋₁.
    - Số mức kim tự tháp: maxLevel = 3 (Mục 6.2.3)
    - Kích thước cửa sổ: winSize = 21×21 (Mục 6.2.1)
@@ -138,7 +138,7 @@ graph TD
   <em>Hình 4: Giai đoạn Theo dõi (Frame 25) - Bám bắt đối tượng và vẽ quỹ đạo chuyển động (trails).</em>
 </div>
 
-**Bước 3 — Lưu kết quả:**
+**Bước 3 — Lưu kết quả (xem Hình 5):**
 - Vẽ bounding box + điểm đặc trưng + quỹ đạo (trails) lên mỗi khung hình.
 - Xuất video đầu ra (.mp4).
 - Xuất quỹ đạo đối tượng ra file CSV (frame, center_x, center_y, bbox_x, bbox_y, bbox_w, bbox_h, num_points).
