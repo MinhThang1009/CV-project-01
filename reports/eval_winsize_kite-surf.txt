@@ -1,0 +1,67 @@
+======================================================================
+  BÁO CÁO ĐÁNH GIÁ KẾT QUẢ (P3.4.4)
+======================================================================
+
+Dataset: kite-surf | winSize=15
+  Frames: 50, FPS: 40.1
+  Video: C:\Users\Admin\Downloads\New folder\output_frames\kite-surf_win15\tracking_kite-surf_win15.mp4
+  Trajectory: C:\Users\Admin\Downloads\New folder\output_frames\kite-surf_win15\trajectory_kite-surf_win15.csv
+  Metrics:
+    bbox_stability_std: 7.198
+    point_survival_pct: 11.5
+    avg_displacement_px: 11.183
+    max_displacement_px: 22.023
+    jitter_rate_pct: 0.0
+    avg_points: 34.5
+    initial_points: 200
+    final_points: 23
+
+--- Nhận xét: kite-surf (winSize=15) ---
+  • Bbox không ổn định (std=7.20px).
+  • Mất nhiều điểm (12% còn lại), tracking có thể bị drift.
+  • Quỹ đạo mượt, không có nhảy đột ngột.
+
+----------------------------------------------------------------------
+
+Dataset: kite-surf | winSize=21
+  Frames: 50, FPS: 36.4
+  Video: C:\Users\Admin\Downloads\New folder\output_frames\kite-surf_win21\tracking_kite-surf_win21.mp4
+  Trajectory: C:\Users\Admin\Downloads\New folder\output_frames\kite-surf_win21\trajectory_kite-surf_win21.csv
+  Metrics:
+    bbox_stability_std: 7.145
+    point_survival_pct: 15.0
+    avg_displacement_px: 11.239
+    max_displacement_px: 22.023
+    jitter_rate_pct: 0.0
+    avg_points: 40.5
+    initial_points: 200
+    final_points: 30
+
+--- Nhận xét: kite-surf (winSize=21) ---
+  • Bbox không ổn định (std=7.14px).
+  • Mất nhiều điểm (15% còn lại), tracking có thể bị drift.
+  • Quỹ đạo mượt, không có nhảy đột ngột.
+
+----------------------------------------------------------------------
+
+Dataset: kite-surf | winSize=31
+  Frames: 50, FPS: 34.6
+  Video: C:\Users\Admin\Downloads\New folder\output_frames\kite-surf_win31\tracking_kite-surf_win31.mp4
+  Trajectory: C:\Users\Admin\Downloads\New folder\output_frames\kite-surf_win31\trajectory_kite-surf_win31.csv
+  Metrics:
+    bbox_stability_std: 7.161
+    point_survival_pct: 20.5
+    avg_displacement_px: 11.135
+    max_displacement_px: 22.023
+    jitter_rate_pct: 0.0
+    avg_points: 50.1
+    initial_points: 200
+    final_points: 41
+
+--- Nhận xét: kite-surf (winSize=31) ---
+  • Bbox không ổn định (std=7.16px).
+  • Mất một phần điểm (20% còn lại), có thể do che khuất hoặc biến dạng.
+  • Quỹ đạo mượt, không có nhảy đột ngột.
+
+----------------------------------------------------------------------
+

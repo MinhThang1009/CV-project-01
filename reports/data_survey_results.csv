@@ -1,0 +1,7 @@
+Dataset,Frames,Resolution,Brightness_Avg,Brightness_Std,Lighting_Change,Flow_Avg_px,Flow_Max_px,Flow_Dir_deg,Motion_Level,Edge_Density_pct,Scene_Complexity
+kite-surf,50,854x480,125.9,1.53,Ổn định,12.74,16.75,162.9,Nhanh,7.09,Trung bình
+lab-coat,47,854x480,153.9,7.04,Thay đổi nhẹ,7.73,11.35,113.8,Nhanh,10.66,Trung bình
+libby,49,854x480,63.2,4.91,Thay đổi nhẹ,19.71,22.16,168.9,Nhanh,11.73,Trung bình
+pigs,79,854x480,118.1,4.01,Thay đổi nhẹ,2.17,3.77,187.1,Trung bình,14.89,Phức tạp
+shooting,40,1152x480,80.3,18.49,Thay đổi mạnh,6.44,12.32,187.0,Nhanh,2.67,Đơn giản
+soapbox,99,854x480,123.0,2.76,Ổn định,3.79,7.83,160.5,Nhanh,10.76,Trung bình

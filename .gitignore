@@ -1,0 +1,34 @@
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# === Virtual Environment ===
+venv/
+.venv/
+env/
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# === OS ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Project ===
+*.log
+.env
+docs/reference_context.txt
+
+# === Data (42MB images) ===
+# Uncomment to exclude raw data from repo
+# data/

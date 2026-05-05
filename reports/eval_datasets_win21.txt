@@ -1,0 +1,46 @@
+======================================================================
+  BÁO CÁO ĐÁNH GIÁ KẾT QUẢ (P3.4.4)
+======================================================================
+
+Dataset: kite-surf | winSize=21
+  Frames: 50, FPS: 38.3
+  Video: C:\Users\Admin\Downloads\New folder\output_frames\kite-surf_win21\tracking_kite-surf_win21.mp4
+  Trajectory: C:\Users\Admin\Downloads\New folder\output_frames\kite-surf_win21\trajectory_kite-surf_win21.csv
+  Metrics:
+    bbox_stability_std: 7.145
+    point_survival_pct: 15.0
+    avg_displacement_px: 11.239
+    max_displacement_px: 22.023
+    jitter_rate_pct: 0.0
+    avg_points: 40.5
+    initial_points: 200
+    final_points: 30
+
+--- Nhận xét: kite-surf (winSize=21) ---
+  • Bbox không ổn định (std=7.14px).
+  • Mất nhiều điểm (15% còn lại), tracking có thể bị drift.
+  • Quỹ đạo mượt, không có nhảy đột ngột.
+
+----------------------------------------------------------------------
+
+Dataset: soapbox | winSize=21
+  Frames: 99, FPS: 33.7
+  Video: C:\Users\Admin\Downloads\New folder\output_frames\soapbox_win21\tracking_soapbox_win21.mp4
+  Trajectory: C:\Users\Admin\Downloads\New folder\output_frames\soapbox_win21\trajectory_soapbox_win21.csv
+  Metrics:
+    bbox_stability_std: 4.38
+    point_survival_pct: 15.8
+    avg_displacement_px: 6.759
+    max_displacement_px: 18.111
+    jitter_rate_pct: 0.0
+    avg_points: 71.7
+    initial_points: 171
+    final_points: 27
+
+--- Nhận xét: soapbox (winSize=21) ---
+  • Bbox không ổn định (std=4.38px).
+  • Mất nhiều điểm (16% còn lại), tracking có thể bị drift.
+  • Quỹ đạo mượt, không có nhảy đột ngột.
+
+----------------------------------------------------------------------
+
