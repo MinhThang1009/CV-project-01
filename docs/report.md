@@ -58,7 +58,7 @@ Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục [`data/`](
 <div align="center">
   <img src="../reports/survey_brightness.jpg" alt="Biểu đồ chiếu sáng" width="80%">
   <br>
-  <em>Hình 1: Đánh giá biến thiên chiếu sáng giữa các tập dữ liệu</em>
+  <em>Hình 1: Biểu đồ đánh giá biến thiên chiếu sáng giữa các tập dữ liệu</em>
 </div>
 
 
@@ -197,7 +197,7 @@ Các chỉ số định lượng được sử dụng:
 | kite-surf | 21      | 36.4 | **7.14**        | 15.0      | 11.24         | 0.0      | 40         |
 | kite-surf | 31      | 34.6 | 7.16            | **20.5**  | 11.13         | 0.0      | **50**     |
 
-→ **Kết luận**: winSize=21 cho bbox ổn định nhất (std=7.14px). winSize=31 giữ được nhiều điểm nhất (20.5% survival, 50 điểm TB) nhờ cửa sổ lớn hơn bắt được chuyển động dài hơn. winSize=15 mất nhiều điểm nhất (chỉ 11.5% survival) do cửa sổ quá nhỏ so với tốc độ chuyển động (12.74 px/frame). Kết quả trực quan được minh họa ở **Hình 6** và **Biểu đồ 1**.
+→ **Kết luận**: winSize=21 cho bbox ổn định nhất (std=7.14px). winSize=31 giữ được nhiều điểm nhất (20.5% survival, 50 điểm TB) nhờ cửa sổ lớn hơn bắt được chuyển động dài hơn. winSize=15 mất nhiều điểm nhất (chỉ 11.5% survival) do cửa sổ quá nhỏ so với tốc độ chuyển động (12.74 px/frame). Kết quả trực quan được minh họa ở **Hình 6** và **Hình 7**.
 
 <div align="center">
   <img src="../reports/compare_winsize_kite-surf.jpg" alt="So sánh winSize" width="80%">
@@ -208,7 +208,7 @@ Các chỉ số định lượng được sử dụng:
 <div align="center">
   <img src="../reports/points_winsize_kite-surf.jpg" alt="Số lượng điểm winSize" width="80%">
   <br>
-  <em>Biểu đồ 1: Sự biến thiên số lượng điểm đặc trưng theo thời gian</em>
+  <em>Hình 7: Biểu đồ sự biến thiên số lượng điểm đặc trưng theo thời gian</em>
 </div>
 
 **Kịch bản 2: So sánh dataset (winSize=21)**
@@ -218,18 +218,18 @@ Các chỉ số định lượng được sử dụng:
 | kite-surf | 21      | 38.3 | 7.14            | 15.0      | 11.24         | 0.0      | 40         |
 | soapbox   | 21      | 33.7 | **4.38**        | 15.8      | **6.76**      | 0.0      | **72**     |
 
-→ **Kết luận**: `soapbox` dễ theo dõi hơn `kite-surf` (stability 4.38 vs 7.14). Bbox di chuyển ít hơn (6.76 vs 11.24 px/frame) và giữ được nhiều điểm hơn (72 vs 40 TB). Điều này phù hợp với kết quả khảo sát dữ liệu: `kite-surf` có tốc độ chuyển động cao hơn (12.74 vs 3.79 px/frame). Quá trình bám bắt được minh họa trong **Hình 7** và **Biểu đồ 2**.
+→ **Kết luận**: `soapbox` dễ theo dõi hơn `kite-surf` (stability 4.38 vs 7.14). Bbox di chuyển ít hơn (6.76 vs 11.24 px/frame) và giữ được nhiều điểm hơn (72 vs 40 TB). Điều này phù hợp với kết quả khảo sát dữ liệu: `kite-surf` có tốc độ chuyển động cao hơn (12.74 vs 3.79 px/frame). Quá trình bám bắt được minh họa trong **Hình 8** và **Hình 9**.
 
 <div align="center">
   <img src="../reports/compare_datasets_win21.jpg" alt="So sánh dataset" width="80%">
   <br>
-  <em>Hình 7: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
+  <em>Hình 8: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
 </div>
 
 <div align="center">
   <img src="../reports/points_datasets_win21.jpg" alt="Số lượng điểm dataset" width="80%">
   <br>
-  <em>Biểu đồ 2: So sánh tỷ lệ tồn tại của các điểm đặc trưng giữa hai dataset</em>
+  <em>Hình 9: Biểu đồ so sánh tỷ lệ tồn tại của các điểm đặc trưng giữa hai dataset</em>
 </div>
 
 > 📄 **Báo cáo log dạng text:** [`reports/eval_winsize_kite-surf.txt`](../reports/eval_winsize_kite-surf.txt), [`reports/eval_datasets_win21.txt`](../reports/eval_datasets_win21.txt)
