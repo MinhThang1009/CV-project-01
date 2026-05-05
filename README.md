@@ -25,6 +25,8 @@
 
 ---
 
+<div align="justify">
+
 ## 1. Giới thiệu chung
 
 Dự án này triển khai một hệ thống theo dõi đối tượng (Object Tracking) dựa trên đặc trưng hình ảnh. Thuật toán cốt lõi sử dụng luồng quang học (Optical Flow) **Pyramid Lucas-Kanade** để ước lượng chuyển động, kết hợp với bộ dò góc **Shi-Tomasi** để trích xuất các điểm đặc trưng tốt nhất. Để tăng tính bền vững (robustness), hệ thống tích hợp bộ lọc **Forward-Backward consistency** để loại bỏ các điểm bị trôi (drift) hoặc che khuất (occlusion).
@@ -185,3 +187,5 @@ python experiment.py --no_display
 3. **Bouguet, J. Y. (2000).** *Pyramidal implementation of the Lucas-Kanade feature tracker.* Intel Corporation.
 4. Chi tiết thực nghiệm xem thêm tại 📄 [Báo cáo Dự án](docs/report.md).
 5. Yêu cầu chi tiết tại 📋 [Đề bài](docs/assignment.md).
+
+</div>

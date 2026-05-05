@@ -24,6 +24,8 @@
 
 ---
 
+<div align="justify">
+
 ## 1. 🎯 Phát biểu bài toán và mục tiêu
 
 Bài toán theo dõi đối tượng (object tracking) nhằm xác định vị trí của đối tượng theo thời gian, duy trì sự liên tục giữa các khung hình và mô tả quỹ đạo chuyển động trong chuỗi video. Khác với xử lý ảnh tĩnh (chỉ xác định đối tượng trong từng ảnh riêng lẻ), bài toán theo dõi khai thác **thông tin chuyển động** giữa các khung hình liên tiếp.
@@ -285,3 +287,5 @@ python tracker.py --dataset kite-surf --win_size 21
 # P3.4.3 & P3.4.4 - Thử nghiệm và đánh giá
 python experiment.py --no_display
 ```
+
+</div>
