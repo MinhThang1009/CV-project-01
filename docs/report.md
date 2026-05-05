@@ -82,6 +82,12 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 2. **Chọn vùng quan tâm (ROI)**: Người dùng khoanh vùng đối tượng bằng chuột (`cv2.selectROI`).
 3. **Phát hiện điểm đặc trưng**: Dùng Shi-Tomasi (`cv2.goodFeaturesToTrack`) để tìm tập điểm P₀ chỉ nằm trong ROI. Các tham số: maxCorners=200, qualityLevel=0.01, minDistance=7, blockSize=7.
 
+<div align="center">
+  <img src="../output/kite-surf_win21/frame_0000.jpg" alt="Bước Khởi tạo" width="60%">
+  <br>
+  <em>Hình 2: Giai đoạn Khởi tạo (Frame 0) - Xác định Bounding Box và trích xuất điểm đặc trưng ban đầu.</em>
+</div>
+
 **Bước 2 — Theo dõi qua từng khung hình Iᵢ (i > 0):**
 1. **Ước lượng chuyển động**: Dùng `cv2.calcOpticalFlowPyrLK` (Pyramid Lucas-Kanade) để tính vector chuyển động cho mỗi điểm trong Pᵢ₋₁.
    - Số mức kim tự tháp: maxLevel = 3 (Mục 6.2.3)
@@ -91,6 +97,12 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 3. **Cập nhật bounding box**: Tính trung vị (median) của vector dịch chuyển các điểm tốt → dịch chuyển bbox. Dùng median thay vì mean để robust hơn với nhiễu.
 4. **Bổ sung điểm mới**: Nếu số điểm < 10 (ngưỡng MIN_POINTS), phát hiện lại các góc Shi-Tomasi trong ROI hiện tại và bổ sung vào tập theo dõi.
 
+<div align="center">
+  <img src="../output/kite-surf_win21/frame_0025.jpg" alt="Bước Theo dõi" width="60%">
+  <br>
+  <em>Hình 3: Giai đoạn Theo dõi (Frame 25) - Bám bắt đối tượng và vẽ quỹ đạo chuyển động (trails).</em>
+</div>
+
 **Bước 3 — Lưu kết quả:**
 - Vẽ bounding box + điểm đặc trưng + quỹ đạo (trails) lên mỗi khung hình.
 - Xuất video đầu ra (.mp4).
@@ -98,9 +110,9 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 - Lưu chuỗi ảnh kết quả vào [`output/`](../output/).
 
 <div align="center">
-  <img src="../output/kite-surf_win21/frame_0025.jpg" alt="Minh họa Tracking" width="80%">
+  <img src="../output/kite-surf_win21/frame_0049.jpg" alt="Bước Kết thúc" width="60%">
   <br>
-  <em>Hình 2: Minh họa Bounding Box (xanh lá), Đặc trưng Shi-Tomasi (đỏ), và Quỹ đạo chuyển động (cyan) trong quá trình theo dõi.</em>
+  <em>Hình 4: Giai đoạn Kết thúc (Frame 49) - Hoàn thành chuỗi video, duy trì thành công vị trí đối tượng.</em>
 </div>
 
 
@@ -155,7 +167,7 @@ Các chỉ số định lượng được sử dụng:
 <div align="center">
   <img src="../reports/compare_winsize_kite-surf.jpg" alt="So sánh winSize" width="80%">
   <br>
-  <em>Hình 3: So sánh trực quan bounding box giữa các cấu hình winSize</em>
+  <em>Hình 5: So sánh trực quan bounding box giữa các cấu hình winSize</em>
 </div>
 
 <div align="center">
@@ -176,7 +188,7 @@ Các chỉ số định lượng được sử dụng:
 <div align="center">
   <img src="../reports/compare_datasets_win21.jpg" alt="So sánh dataset" width="80%">
   <br>
-  <em>Hình 4: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
+  <em>Hình 6: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
 </div>
 
 <div align="center">
