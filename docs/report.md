@@ -33,7 +33,7 @@ Bài toán theo dõi đối tượng (object tracking) nhằm xác định vị 
 
 ## 2. 📊 Mô tả dữ liệu
 
-Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục `data/`:
+Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục [`data/`](../data/):
 
 | Dataset   | Frames | Độ phân giải | Chiếu sáng     | Chuyển động          | Cảnh nền     |
 |-----------|--------|-------------|----------------|----------------------|-------------|
@@ -93,7 +93,7 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 - Vẽ bounding box + điểm đặc trưng + quỹ đạo (trails) lên mỗi khung hình.
 - Xuất video đầu ra (.mp4).
 - Xuất quỹ đạo đối tượng ra file CSV (frame, center_x, center_y, bbox_x, bbox_y, bbox_w, bbox_h, num_points).
-- Lưu chuỗi ảnh kết quả vào `output/`.
+- Lưu chuỗi ảnh kết quả vào [`output/`](../output/).
 
 
 ## 4. 🧪 Các phương án thực nghiệm
@@ -220,9 +220,9 @@ Dự án đã xây dựng thành công một quy trình theo dõi đối tượn
 |----------|-------------|
 | Mã nguồn chương trình | `data_survey.py`, `tracker.py`, `experiment.py` |
 | Báo cáo dự án | `docs/report.md` (file này) |
-| Video đầu ra | `output/*/tracking_*.mp4` |
-| Chuỗi ảnh kết quả | `output/*/frame_*.jpg` |
-| Quỹ đạo đối tượng | `output/*/trajectory_*.csv` |
+| Video đầu ra | [`output/*/tracking_*.mp4`](../output/) |
+| Chuỗi ảnh kết quả | [`output/*/frame_*.jpg`](../output/) |
+| Quỹ đạo đối tượng | [`output/*/trajectory_*.csv`](../output/) |
 | Kết quả phân tích dữ liệu | `reports/data_survey_results.csv` |
 | Ảnh so sánh + biểu đồ | `reports/*.jpg` |
 | Báo cáo đánh giá | `reports/eval_*.txt` |

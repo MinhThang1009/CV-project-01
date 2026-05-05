@@ -19,7 +19,7 @@ Dữ liệu sử dụng trong dự án là video hoặc chuỗi khung hình đư
 
 **Dữ liệu mẫu 3**: Theo dõi đối tượng trong video hoặc chuỗi khung hình.
 
-- Truy cập thư mục dữ liệu (Thư mục `resources/lab3/`)
+- Truy cập thư mục dữ liệu (Thư mục [`data/`](../data/))
 - Các thư mục chứa chuỗi khung hình hoặc video
 
 ### 🧠 P3.3. Kiến thức nền tảng
