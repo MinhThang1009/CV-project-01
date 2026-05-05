@@ -4,6 +4,24 @@
 
 ---
 
+## 📑 Mục lục
+1. [Phát biểu bài toán và mục tiêu](#1--phát-biểu-bài-toán-và-mục-tiêu)
+2. [Mô tả dữ liệu](#2--mô-tả-dữ-liệu)
+3. [Mô tả quy trình theo dõi](#3-️-mô-tả-quy-trình-theo-dõi)
+   - [3.1. Lựa chọn phương pháp](#31-lựa-chọn-phương-pháp)
+   - [3.2. Các bước trong quy trình](#32-các-bước-trong-quy-trình)
+4. [Các phương án thực nghiệm](#4--các-phương-án-thực-nghiệm)
+5. [Kết quả theo dõi và so sánh](#5--kết-quả-theo-dõi-và-so-sánh)
+   - [5.1. Chỉ số đánh giá](#51-chỉ-số-đánh-giá-p344)
+   - [5.2. Kết quả thực nghiệm](#52-kết-quả-thực-nghiệm)
+6. [Nhận xét và kết luận](#6--nhận-xét-và-kết-luận)
+   - [6.1. Nhận xét](#61-nhận-xét)
+   - [6.2. Kết luận](#62-kết-luận)
+7. [Sản phẩm nộp](#7--sản-phẩm-nộp-p36)
+8. [Phụ lục: Cách chạy chương trình](#-phụ-lục-cách-chạy-chương-trình)
+
+---
+
 <div align="justify">
 
 ## 1. 🎯 Phát biểu bài toán và mục tiêu
