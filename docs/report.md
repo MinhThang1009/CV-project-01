@@ -30,7 +30,7 @@ Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục `data/`:
 - Dataset `shooting` có biến đổi chiếu sáng mạnh nhất (std = 18.49), ảnh hưởng đến giả định brightness constancy.
 - Dataset `soapbox` và `kite-surf` có chiếu sáng ổn định, phù hợp nhất để đánh giá thuật toán.
 
-> 📄 **Kết quả phân tích chi tiết:** `reports/data_survey_results.csv`
+> 📄 **Kết quả phân tích chi tiết:** [`reports/data_survey_results.csv`](../reports/data_survey_results.csv)
 
 **Biểu đồ biến thiên chiếu sáng:**
 <div align="center">
@@ -157,7 +157,7 @@ Các chỉ số định lượng được sử dụng:
   <em>Biểu đồ 2: So sánh tỷ lệ tồn tại của các điểm đặc trưng giữa hai dataset</em>
 </div>
 
-> 📄 **Báo cáo log dạng text:** `reports/eval_winsize_kite-surf.txt`, `reports/eval_datasets_win21.txt`
+> 📄 **Báo cáo log dạng text:** [`reports/eval_winsize_kite-surf.txt`](../reports/eval_winsize_kite-surf.txt), [`reports/eval_datasets_win21.txt`](../reports/eval_datasets_win21.txt)
 
 
 ## 6. 💡 Nhận xét và kết luận
