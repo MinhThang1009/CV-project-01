@@ -54,7 +54,7 @@ Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục [`data/`](
 
 > 📄 **Kết quả phân tích chi tiết:** [`reports/data_survey_results.csv`](../reports/data_survey_results.csv)
 
-**Biểu đồ biến thiên chiếu sáng:**
+**Biểu đồ biến thiên chiếu sáng (xem Hình 1):**
 <div align="center">
   <img src="../reports/survey_brightness.jpg" alt="Biểu đồ chiếu sáng" width="80%">
   <br>
@@ -75,7 +75,42 @@ Dữ liệu gồm 6 chuỗi khung hình (ảnh .jpg) trong thư mục [`data/`](
 
 ### 3.2. Các bước trong quy trình
 
-Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
+Quy trình tuân theo sơ đồ khối thuật toán tổng quan được minh họa ở **Hình 2** dưới đây (chi tiết tham chiếu theo Mục 6.2.4):
+
+```mermaid
+graph TD
+    %% Định nghĩa Style
+    classDef init fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#000;
+    classDef process fill:#cce5ff,stroke:#007bff,stroke-width:2px,color:#000;
+    classDef check fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#000;
+    classDef update fill:#e2e3e5,stroke:#6c757d,stroke-width:2px,color:#000;
+
+    %% Nodes
+    A[Khung hình I_0]:::init --> B[Gaussian Blur 5x5]:::process
+    B --> C[Phát hiện Shi-Tomasi Corners]:::process
+    C --> D[Khởi tạo Bounding Box & Tập điểm P_0]:::init
+    
+    D --> E{Khung hình I_i kế tiếp}:::check
+    E --> F[Gaussian Blur 5x5]:::process
+    F --> G[Pyramid Lucas-Kanade Optical Flow]:::process
+    G --> H[Forward-Backward Consistency Check]:::check
+    H --> I[Lọc bỏ điểm ngoại lai - Outliers]:::update
+    I --> J[Tính Dịch chuyển Trung vị - Median Displacement]:::process
+    J --> K[Cập nhật Bounding Box & Vẽ Quỹ đạo]:::update
+    
+    K --> L{Số điểm P_i < 10?}:::check
+    L -- Có --> M[Phát hiện lại Shi-Tomasi]:::process
+    M --> N
+    L -- Không --> N[Lưu Video & Ảnh kết quả]:::update
+    
+    N --> O{Còn Khung hình?}:::check
+    O -- Có --> E
+    O -- Không --> P((Kết thúc)):::init
+```
+<div align="center">
+  <em>Hình 2: Sơ đồ khối tổng quan của quy trình theo dõi đối tượng</em>
+</div>
+<br>
 
 **Bước 1 — Khởi tạo tại khung hình I₀:**
 1. **Tiền xử lý**: Làm mượt ảnh bằng bộ lọc Gaussian (kernel 5×5, σ=1.0 — Mục 4.1.2) để giảm nhiễu cộng.
@@ -85,7 +120,7 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 <div align="center">
   <img src="../output/kite-surf_win21/frame_0000.jpg" alt="Bước Khởi tạo" width="60%">
   <br>
-  <em>Hình 2: Giai đoạn Khởi tạo (Frame 0) - Xác định Bounding Box và trích xuất điểm đặc trưng ban đầu.</em>
+  <em>Hình 3: Giai đoạn Khởi tạo (Frame 0) - Xác định Bounding Box và trích xuất điểm đặc trưng ban đầu.</em>
 </div>
 
 **Bước 2 — Theo dõi qua từng khung hình Iᵢ (i > 0):**
@@ -100,7 +135,7 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 <div align="center">
   <img src="../output/kite-surf_win21/frame_0025.jpg" alt="Bước Theo dõi" width="60%">
   <br>
-  <em>Hình 3: Giai đoạn Theo dõi (Frame 25) - Bám bắt đối tượng và vẽ quỹ đạo chuyển động (trails).</em>
+  <em>Hình 4: Giai đoạn Theo dõi (Frame 25) - Bám bắt đối tượng và vẽ quỹ đạo chuyển động (trails).</em>
 </div>
 
 **Bước 3 — Lưu kết quả:**
@@ -112,7 +147,7 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 <div align="center">
   <img src="../output/kite-surf_win21/frame_0049.jpg" alt="Bước Kết thúc" width="60%">
   <br>
-  <em>Hình 4: Giai đoạn Kết thúc (Frame 49) - Hoàn thành chuỗi video, duy trì thành công vị trí đối tượng.</em>
+  <em>Hình 5: Giai đoạn Kết thúc (Frame 49) - Hoàn thành chuỗi video, duy trì thành công vị trí đối tượng.</em>
 </div>
 
 
@@ -162,12 +197,12 @@ Các chỉ số định lượng được sử dụng:
 | kite-surf | 21      | 36.4 | **7.14**        | 15.0      | 11.24         | 0.0      | 40         |
 | kite-surf | 31      | 34.6 | 7.16            | **20.5**  | 11.13         | 0.0      | **50**     |
 
-→ **Kết luận**: winSize=21 cho bbox ổn định nhất (std=7.14px). winSize=31 giữ được nhiều điểm nhất (20.5% survival, 50 điểm TB) nhờ cửa sổ lớn hơn bắt được chuyển động dài hơn. winSize=15 mất nhiều điểm nhất (chỉ 11.5% survival) do cửa sổ quá nhỏ so với tốc độ chuyển động (12.74 px/frame).
+→ **Kết luận**: winSize=21 cho bbox ổn định nhất (std=7.14px). winSize=31 giữ được nhiều điểm nhất (20.5% survival, 50 điểm TB) nhờ cửa sổ lớn hơn bắt được chuyển động dài hơn. winSize=15 mất nhiều điểm nhất (chỉ 11.5% survival) do cửa sổ quá nhỏ so với tốc độ chuyển động (12.74 px/frame). Kết quả trực quan được minh họa ở **Hình 6** và **Biểu đồ 1**.
 
 <div align="center">
   <img src="../reports/compare_winsize_kite-surf.jpg" alt="So sánh winSize" width="80%">
   <br>
-  <em>Hình 5: So sánh trực quan bounding box giữa các cấu hình winSize</em>
+  <em>Hình 6: So sánh trực quan bounding box giữa các cấu hình winSize</em>
 </div>
 
 <div align="center">
@@ -183,12 +218,12 @@ Các chỉ số định lượng được sử dụng:
 | kite-surf | 21      | 38.3 | 7.14            | 15.0      | 11.24         | 0.0      | 40         |
 | soapbox   | 21      | 33.7 | **4.38**        | 15.8      | **6.76**      | 0.0      | **72**     |
 
-→ **Kết luận**: `soapbox` dễ theo dõi hơn `kite-surf` (stability 4.38 vs 7.14). Bbox di chuyển ít hơn (6.76 vs 11.24 px/frame) và giữ được nhiều điểm hơn (72 vs 40 TB). Điều này phù hợp với kết quả khảo sát dữ liệu: `kite-surf` có tốc độ chuyển động cao hơn (12.74 vs 3.79 px/frame).
+→ **Kết luận**: `soapbox` dễ theo dõi hơn `kite-surf` (stability 4.38 vs 7.14). Bbox di chuyển ít hơn (6.76 vs 11.24 px/frame) và giữ được nhiều điểm hơn (72 vs 40 TB). Điều này phù hợp với kết quả khảo sát dữ liệu: `kite-surf` có tốc độ chuyển động cao hơn (12.74 vs 3.79 px/frame). Quá trình bám bắt được minh họa trong **Hình 7** và **Biểu đồ 2**.
 
 <div align="center">
   <img src="../reports/compare_datasets_win21.jpg" alt="So sánh dataset" width="80%">
   <br>
-  <em>Hình 6: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
+  <em>Hình 7: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
 </div>
 
 <div align="center">
