@@ -1,5 +1,7 @@
 <div align="center">
-  <h1 align="center">📄 BÁO CÁO DỰ ÁN P3: THEO DÕI ĐỐI TƯỢNG TRONG VIDEO</h1>
+  <h1 align="center">📄 BÁO CÁO DỰ ÁN P3</h1>
+  <h2 align="center">Theo dõi đối tượng trong video (Object Tracking)</h2>
+  <p align="center"><i>Báo cáo kết quả thực nghiệm hệ thống Pyramid Lucas-Kanade</i></p>
 </div>
 
 ---
