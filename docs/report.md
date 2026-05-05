@@ -123,7 +123,7 @@ graph TD
   <em>Hình 3: Giai đoạn Khởi tạo (Frame 0) - Xác định Bounding Box và trích xuất điểm đặc trưng ban đầu.</em>
 </div>
 
-**Bước 2 — Theo dõi qua từng khung hình Iᵢ (i > 0) (xem Hình 4):**
+**Bước 2 — Theo dõi qua từng khung hình Iᵢ (i > 0) (xem Hình 4 và Hình 5):**
 1. **Ước lượng chuyển động**: Dùng `cv2.calcOpticalFlowPyrLK` (Pyramid Lucas-Kanade) để tính vector chuyển động cho mỗi điểm trong Pᵢ₋₁.
    - Số mức kim tự tháp: maxLevel = 3 (Mục 6.2.3)
    - Kích thước cửa sổ: winSize = 21×21 (Mục 6.2.1)
@@ -135,20 +135,20 @@ graph TD
 <div align="center">
   <img src="../output/kite-surf_win21/frame_0025.jpg" alt="Bước Theo dõi" width="60%">
   <br>
-  <em>Hình 4: Giai đoạn Theo dõi (Frame 25) - Bám bắt đối tượng và vẽ quỹ đạo chuyển động (trails).</em>
+  <em>Hình 4: Giai đoạn Theo dõi (Frame 25) - Bám bắt đối tượng và vẽ quỹ đạo chuyển động (chuyển động ảnh).</em>
 </div>
-
-**Bước 3 — Lưu kết quả (xem Hình 5):**
-- Vẽ bounding box + điểm đặc trưng + quỹ đạo (trails) lên mỗi khung hình.
-- Xuất video đầu ra (.mp4).
-- Xuất quỹ đạo đối tượng ra file CSV (frame, center_x, center_y, bbox_x, bbox_y, bbox_w, bbox_h, num_points).
-- Lưu chuỗi ảnh kết quả vào [`output/`](../output/).
 
 <div align="center">
   <img src="../output/kite-surf_win21/frame_0049.jpg" alt="Bước Kết thúc" width="60%">
   <br>
-  <em>Hình 5: Giai đoạn Kết thúc (Frame 49) - Hoàn thành chuỗi video, duy trì thành công vị trí đối tượng.</em>
+  <em>Hình 5: Giai đoạn Kết thúc (Frame 49) - Hoàn thành chuỗi video, minh chứng cho khả năng duy trì sự liên tục.</em>
 </div>
+
+**Bước 3 — Lưu kết quả:**
+- Vẽ bounding box + điểm đặc trưng + quỹ đạo (trails) lên mỗi khung hình.
+- Xuất video đầu ra (.mp4).
+- Xuất quỹ đạo đối tượng ra file CSV (frame, center_x, center_y, bbox_x, bbox_y, bbox_w, bbox_h, num_points).
+- Lưu chuỗi ảnh kết quả vào [`output/`](../output/).
 
 
 ## 4. 🧪 Các phương án thực nghiệm
