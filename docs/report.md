@@ -95,6 +95,12 @@ Quy trình tuân theo khung thuật toán trong Mục 6.2.4:
 - Xuất quỹ đạo đối tượng ra file CSV (frame, center_x, center_y, bbox_x, bbox_y, bbox_w, bbox_h, num_points).
 - Lưu chuỗi ảnh kết quả vào [`output/`](../output/).
 
+<div align="center">
+  <img src="../output/kite-surf_win21/frame_0025.jpg" alt="Minh họa Tracking" width="80%">
+  <br>
+  <em>Hình 2: Minh họa Bounding Box (xanh lá), Đặc trưng Shi-Tomasi (đỏ), và Quỹ đạo chuyển động (cyan) trong quá trình theo dõi.</em>
+</div>
+
 
 ## 4. 🧪 Các phương án thực nghiệm
 
@@ -147,7 +153,7 @@ Các chỉ số định lượng được sử dụng:
 <div align="center">
   <img src="../reports/compare_winsize_kite-surf.jpg" alt="So sánh winSize" width="80%">
   <br>
-  <em>Hình 2: So sánh trực quan bounding box giữa các cấu hình winSize</em>
+  <em>Hình 3: So sánh trực quan bounding box giữa các cấu hình winSize</em>
 </div>
 
 <div align="center">
@@ -168,7 +174,7 @@ Các chỉ số định lượng được sử dụng:
 <div align="center">
   <img src="../reports/compare_datasets_win21.jpg" alt="So sánh dataset" width="80%">
   <br>
-  <em>Hình 3: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
+  <em>Hình 4: Khả năng duy trì bám bắt trên hai video có đặc tính chuyển động khác biệt</em>
 </div>
 
 <div align="center">
