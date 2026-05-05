@@ -90,6 +90,7 @@ Dự án tuân thủ chuẩn tổ chức thư mục cho Machine Learning / Compu
 ```text
 📦 CV-project-01
 ├── 📜 README.md                  # Tài liệu giới thiệu dự án
+├── 📜 LICENSE                    # Giấy phép mã nguồn mở (MIT)
 ├── 📜 requirements.txt           # Danh sách thư viện phụ thuộc
 ├── 📜 .gitignore                 # Cấu hình bỏ qua file cho Git
 │

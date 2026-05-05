@@ -5,8 +5,6 @@
 
 ---
 
-<div align="justify">
-
 ### 🎯 P3.1. Mục tiêu của dự án
 
 Trong nhiều bài toán thị giác máy, việc xác định đối tượng trong từng ảnh riêng lẻ là chưa đủ. Hệ thống còn cần xác định được vị trí của đối tượng theo thời gian, duy trì sự liên tục giữa các khung hình và mô tả được quỹ đạo chuyển động của đối tượng trong chuỗi video. Đây là nội dung cốt lõi của bài toán theo dõi đối tượng.
@@ -98,5 +96,3 @@ Sản phẩm của dự án bao gồm:
 ### 🏆 P3.7. Kết quả cần đạt
 
 Sau khi hoàn thành dự án, kết quả đạt được cần thể hiện một quy trình theo dõi đối tượng cơ bản có khả năng đi từ dữ liệu video đến kết quả bám bắt đối tượng theo thời gian. Quan trọng hơn, dự án cần cho thấy được mối liên hệ giữa **chuyển động ảnh**, **đặc trưng quan sát được** và **khả năng duy trì sự liên tục** của đối tượng trong chuỗi khung hình.
-
-</div>
