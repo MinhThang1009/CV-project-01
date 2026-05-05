@@ -1,114 +1,186 @@
-# P3: Theo dõi đối tượng trong video
+<div align="center">
+  <h1 align="center">🎯 Theo dõi Đối tượng trong Video (Object Tracking)</h1>
+  <p align="center">
+    <strong>Dự án thực hành Thị giác Máy — Theo dõi đối tượng bằng Pyramid Lucas-Kanade kết hợp phát hiện đặc trưng Shi-Tomasi và kiểm tra nhất quán Forward-Backward.</strong>
+  </p>
+  <p align="center">
+    <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
+    <a href="https://opencv.org/"><img src="https://img.shields.io/badge/OpenCV-4.5+-green?style=for-the-badge&logo=opencv&logoColor=white" alt="OpenCV"></a>
+    <a href="https://numpy.org/"><img src="https://img.shields.io/badge/NumPy-1.20+-013243?style=for-the-badge&logo=numpy&logoColor=white" alt="NumPy"></a>
+  </p>
+</div>
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-4.5%2B-green?logo=opencv&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-1.20%2B-013243?logo=numpy&logoColor=white)
+---
 
-Dự án thực hành Thị giác Máy — Theo dõi đối tượng bằng **Pyramid Lucas-Kanade** kết hợp phát hiện đặc trưng **Shi-Tomasi** và kiểm tra nhất quán **Forward-Backward**.
+## 📑 Mục lục
+1. [Giới thiệu chung](#1-giới-thiệu-chung)
+2. [Tính năng nổi bật](#2-tính-năng-nổi-bật)
+3. [Demo Trực quan](#3-demo-trực-quan)
+4. [Kiến trúc & Tổng quan phương pháp](#4-kiến-trúc--tổng-quan-phương-pháp)
+5. [Cấu trúc thư mục](#5-cấu-trúc-thư-mục)
+6. [Hướng dẫn Cài đặt](#6-hướng-dẫn-cài-đặt)
+7. [Cách Sử dụng](#7-cách-sử-dụng)
+8. [Đánh giá & Kết quả](#8-đánh-giá--kết-quả)
+9. [Tài liệu tham khảo](#9-tài-liệu-tham-khảo)
 
-## Demo
+---
 
-| Khung hình đầu (Khởi tạo) | Giữa chuỗi | Khung hình cuối |
+## 1. Giới thiệu chung
+
+Dự án này triển khai một hệ thống theo dõi đối tượng (Object Tracking) dựa trên đặc trưng hình ảnh. Thuật toán cốt lõi sử dụng luồng quang học (Optical Flow) **Pyramid Lucas-Kanade** để ước lượng chuyển động, kết hợp với bộ dò góc **Shi-Tomasi** để trích xuất các điểm đặc trưng tốt nhất. Để tăng tính bền vững (robustness), hệ thống tích hợp bộ lọc **Forward-Backward consistency** để loại bỏ các điểm bị trôi (drift) hoặc che khuất (occlusion).
+
+## 2. Tính năng nổi bật
+
+- 🔭 **Pyramid Lucas-Kanade (3 mức):** Ước lượng chuyển động lớn thông qua xử lý kim tự tháp ảnh đa độ phân giải.
+- 🎯 **Shi-Tomasi Corner Detection:** Trích xuất các điểm góc ổn định, thỏa mãn các điều kiện bám bắt tốt nhất.
+- 🛡️ **Forward-Backward Consistency Check:** Cơ chế lọc nhiễu tự động, phát hiện và loại bỏ các điểm theo dõi sai lệch.
+- 📐 **Cập nhật Bounding Box bằng Trung vị (Median):** Sử dụng `median displacement` thay vì `mean` giúp giảm thiểu tác động của nhiễu.
+- 🔄 **Auto Re-detection:** Tự động phát hiện và bổ sung điểm đặc trưng mới khi số lượng điểm hiện tại giảm dưới ngưỡng (ngăn chặn mất dấu).
+- 📊 **Phân tích Tự động & Xuất báo cáo:** Đánh giá độ ổn định, tỷ lệ sống sót của điểm (survival rate) và tự động xuất biểu đồ, quỹ đạo.
+
+## 3. Demo Trực quan
+
+Dưới đây là kết quả theo dõi trên tập dữ liệu `kite-surf` (chuyển động nhanh) sử dụng `winSize=21`.
+
+| Khởi tạo (Frame 0) | Giữa chuỗi (Frame 25) | Kết thúc (Frame 49) |
 |:---:|:---:|:---:|
 | ![frame0](output/kite-surf_win21/frame_0000.jpg) | ![frame25](output/kite-surf_win21/frame_0025.jpg) | ![frame49](output/kite-surf_win21/frame_0049.jpg) |
 
-> 🟢 Hộp xanh = bounding box &nbsp;|&nbsp; 🔴 Chấm đỏ = điểm đặc trưng &nbsp;|&nbsp; 🔵 Đường cyan = quỹ đạo
+> 🟢 **Hộp xanh (Bounding Box)** &nbsp;\|&nbsp; 🔴 **Chấm đỏ (Đặc trưng được theo dõi)** &nbsp;\|&nbsp; 🔵 **Đường màu Cyan (Quỹ đạo chuyển động)**
 
-## Tính năng chính
+## 4. Kiến trúc & Tổng quan phương pháp
 
-- **Pyramid Lucas-Kanade** (3 mức) — ước lượng chuyển động lớn qua kim tự tháp ảnh
-- **Shi-Tomasi** — phát hiện điểm góc thỏa điều kiện theo dõi được
-- **Forward-Backward check** — loại bỏ điểm ngoại lai bằng kiểm tra nhất quán
-- **Median displacement** — cập nhật bbox robust, kháng nhiễu
-- **Tự động bổ sung điểm** khi số điểm giảm dưới ngưỡng
-- **Đầu ra**: video `.mp4`, quỹ đạo `.csv`, chuỗi ảnh `.jpg`
+Sơ đồ quy trình thực thi (Pipeline) theo dõi qua từng khung hình:
 
-## Cấu trúc thư mục
+```mermaid
+graph TD
+    %% Định nghĩa Style
+    classDef init fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#000;
+    classDef process fill:#cce5ff,stroke:#007bff,stroke-width:2px,color:#000;
+    classDef check fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#000;
+    classDef update fill:#e2e3e5,stroke:#6c757d,stroke-width:2px,color:#000;
 
+    %% Nodes
+    A[Khung hình I_0]:::init --> B[Gaussian Blur 5x5]:::process
+    B --> C[Phát hiện Shi-Tomasi Corners]:::process
+    C --> D[Khởi tạo Bounding Box & Tập điểm P_0]:::init
+    
+    D --> E{Khung hình I_i kế tiếp}:::check
+    E --> F[Gaussian Blur 5x5]:::process
+    F --> G[Pyramid Lucas-Kanade Optical Flow]:::process
+    G --> H[Forward-Backward Consistency Check]:::check
+    H --> I[Lọc bỏ điểm ngoại lai - Outliers]:::update
+    I --> J[Tính Dịch chuyển Trung vị - Median Displacement]:::process
+    J --> K[Cập nhật Bounding Box & Vẽ Quỹ đạo]:::update
+    
+    K --> L{Số điểm P_i < 10?}:::check
+    L -- Có --> M[Phát hiện lại Shi-Tomasi]:::process
+    M --> N
+    L -- Không --> N[Lưu Video & Ảnh kết quả]:::update
+    
+    N --> O{Còn Khung hình?}:::check
+    O -- Có --> E
+    O -- Không --> P((Kết thúc)):::init
 ```
-├── data_survey.py             # Khảo sát dữ liệu (chiếu sáng, chuyển động, cảnh nền)
-├── tracker.py                 # Quy trình theo dõi đối tượng
-├── experiment.py              # Thử nghiệm & đánh giá tự động
+
+## 5. Cấu trúc thư mục
+
+Dự án tuân thủ chuẩn tổ chức thư mục cho Machine Learning / Computer Vision:
+
+```text
+📦 CV-project-01
+├── 📜 README.md                  # Tài liệu giới thiệu dự án
+├── 📜 requirements.txt           # Danh sách thư viện phụ thuộc
+├── 📜 .gitignore                 # Cấu hình bỏ qua file cho Git
 │
-├── data/                      # Dữ liệu đầu vào (6 chuỗi khung hình)
-├── output/                    # Kết quả theo dõi (video, ảnh, CSV)
-├── reports/                   # Báo cáo đánh giá & biểu đồ
-└── docs/                      # Tài liệu (báo cáo, đề bài)
+├── 🐍 data_survey.py             # Script khảo sát dữ liệu (ánh sáng, chuyển động)
+├── 🐍 tracker.py                 # Core Pipeline theo dõi đối tượng
+├── 🐍 experiment.py              # Kịch bản thử nghiệm & đánh giá
+│
+├── 📂 data/                      # Chứa dữ liệu đầu vào (6 chuỗi ảnh)
+├── 📂 output/                    # Kết quả xuất ra (Video .mp4, Ảnh, CSV)
+├── 📂 reports/                   # Báo cáo đánh giá (Biểu đồ .jpg, Text .txt)
+└── 📂 docs/                      # Tài liệu tham chiếu
+    ├── 📄 report.md              # Báo cáo chi tiết phương pháp & thực nghiệm
+    └── 📄 assignment.md          # Yêu cầu đề bài gốc
 ```
 
-## Cài đặt
+## 6. Hướng dẫn Cài đặt
 
-**Yêu cầu**: Python 3.8+
+Yêu cầu hệ thống: **Python 3.8+**
 
+**Bước 1: Clone kho lưu trữ**
 ```bash
 git clone https://github.com/MinhThang1009/CV-project-01.git
 cd CV-project-01
+```
 
+**Bước 2: Khởi tạo môi trường ảo (Khuyến nghị)**
+```bash
+# Trên Windows
 python -m venv venv
-venv\Scripts\activate            # Windows
-# source venv/bin/activate       # Linux/Mac
+venv\Scripts\activate
 
+# Trên Linux/macOS
+python3 -m venv venv
+source venv/bin/activate
+```
+
+**Bước 3: Cài đặt các thư viện phụ thuộc**
+```bash
 pip install -r requirements.txt
 ```
 
-## Cách sử dụng
+## 7. Cách Sử dụng
 
+Dự án cung cấp 3 module chính với các chức năng độc lập:
+
+**1. Phân tích & Khảo sát tập dữ liệu (P3.4.1)**
 ```bash
-# 1. Khảo sát dữ liệu (P3.4.1)
 python data_survey.py --dataset all --no_display
+```
 
-# 2. Theo dõi đối tượng — chọn ROI bằng chuột (P3.4.2)
+**2. Chạy Tracker với ROI Tùy chọn (P3.4.2)**
+*(Hệ thống sẽ mở khung hình đầu, dùng chuột kéo thả để vẽ Bounding Box, nhấn `SPACE` hoặc `ENTER` để bắt đầu)*
+```bash
 python tracker.py --dataset kite-surf --win_size 21
+```
 
-# 3. Theo dõi với bbox có sẵn (không cần GUI)
+**3. Chạy Tracker với Bounding Box định sẵn (Chế độ Headless)**
+```bash
 python tracker.py --dataset kite-surf --bbox 210 140 260 270 --no_display
+```
 
-# 4. Chạy thử nghiệm & đánh giá (P3.4.3 + P3.4.4)
+**4. Chạy toàn bộ Thử nghiệm tự động (P3.4.3 & P3.4.4)**
+```bash
 python experiment.py --no_display
 ```
 
-## Kết quả
+## 8. Đánh giá & Kết quả
 
-### So sánh kích thước cửa sổ trên `kite-surf`
+Đánh giá định lượng được thực hiện trên các chỉ số: **Stability** (Độ ổn định của Bbox), **Survival Rate** (Tỷ lệ điểm giữ được), và **Jitter** (Độ giật lag).
 
-| WinSize | Ổn định (std↓) | Tồn tại (%) ↑ | Dịch chuyển TB (px) | Jitter (%) ↓ |
-|:-------:|:--------------:|:-------------:|:-------------------:|:------------:|
-| 15×15   | 7.20           | 11.5          | 11.18               | 0.0          |
-| **21×21** | **7.14**     | 15.0          | 11.24               | **0.0**      |
-| 31×31   | 7.16           | **20.5**      | 11.13               | 0.0          |
+### 8.1. Đánh giá Kích thước Cửa sổ (trên `kite-surf`)
 
-### So sánh giữa các dataset (winSize=21)
+| Cấu hình (WinSize) | Ổn định (std↓) | Tồn tại (%) ↑ | Dịch chuyển TB (px) | Jitter (%) ↓ |
+|:------------------:|:--------------:|:-------------:|:-------------------:|:------------:|
+| 15×15              | 7.20           | 11.5          | 11.18               | 0.0          |
+| **21×21**          | **7.14**       | 15.0          | 11.24               | **0.0**      |
+| 31×31              | 7.16           | **20.5**      | 11.13               | 0.0          |
 
-| Dataset   | Ổn định (std↓) | Tồn tại (%) ↑ | Điểm TB | Jitter (%) ↓ |
-|:---------:|:--------------:|:-------------:|:-------:|:------------:|
-| kite-surf | 7.14           | 15.0          | 40      | 0.0          |
-| **soapbox** | **4.38**     | 15.8          | **72**  | **0.0**      |
+### 8.2. So sánh Chéo Tập dữ liệu (winSize = 21)
 
-> **Nhận xét**: `winSize=21` cho bbox ổn định nhất. Đối tượng di chuyển chậm hơn (`soapbox`) dễ theo dõi hơn. Tất cả cấu hình đều đạt jitter 0%.
+| Dataset | Đặc tính | Ổn định (std↓) | Tồn tại (%) ↑ | Điểm TB | Jitter (%) ↓ |
+|:-------:|:---------|:--------------:|:-------------:|:-------:|:------------:|
+| `kite-surf` | Chuyển động nhanh | 7.14 | 15.0 | 40 | 0.0 |
+| **`soapbox`** | Chuyển động chậm | **4.38** | 15.8 | **72** | **0.0** |
 
-## Tổng quan phương pháp
+> 📌 **Kết luận chính:** Cửa sổ `winSize=21` cung cấp sự cân bằng tốt nhất giữa độ ổn định và chi phí tính toán. Hệ thống hoạt động xuất sắc (jitter=0%) trên mọi cấu hình nhờ cơ chế lọc Median và Forward-Backward.
 
-```
-Frame₀ ──► Gaussian Blur ──► Shi-Tomasi ──► Tập điểm P₀
-                                                │
-Frame_i ──► Gaussian Blur ──► Pyramid LK  ◄────┘
-                                   │
-                        Forward-Backward Check
-                                   │
-                        Median Displacement
-                                   │
-                        Cập nhật BBox + Quỹ đạo
-                                   │
-                     Điểm < 10? ──► Phát hiện lại Shi-Tomasi
-```
+## 9. Tài liệu tham khảo
 
-## Tài liệu tham khảo
-
-- **Lucas & Kanade** (1981). *An iterative image registration technique with an application to stereo vision.*
-- **Shi & Tomasi** (1994). *Good features to track.*
-- **Bouguet** (2000). *Pyramidal implementation of the Lucas-Kanade feature tracker.*
-
-## Tài liệu dự án
-
-- 📄 [Báo cáo dự án](docs/report.md) — Phân tích, phương pháp và kết quả chi tiết
-- 📋 [Đề bài](docs/assignment.md) — Yêu cầu dự án gốc
+1. **Lucas, B. D., & Kanade, T. (1981).** *An iterative image registration technique with an application to stereo vision.*
+2. **Shi, J., & Tomasi, C. (1994).** *Good features to track.* IEEE Conference on Computer Vision and Pattern Recognition.
+3. **Bouguet, J. Y. (2000).** *Pyramidal implementation of the Lucas-Kanade feature tracker.* Intel Corporation.
+4. Chi tiết thực nghiệm xem thêm tại 📄 [Báo cáo Dự án](docs/report.md).
+5. Yêu cầu chi tiết tại 📋 [Đề bài](docs/assignment.md).
